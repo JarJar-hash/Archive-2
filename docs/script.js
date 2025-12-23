@@ -50,6 +50,7 @@ function populateFilters(data) {
 
     data.forEach(m => {
         years.add(m.date.substring(6,10));
+        years.add(m.date.split('/')[0]);
         competitions.add(m.competition);
         if (m.phase) phases.add(m.phase);
         teams.add(m.home_team);
