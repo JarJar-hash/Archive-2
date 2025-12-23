@@ -15,6 +15,33 @@ main {
     padding: 30px;
 }
 
+#filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#filters select,
+#filters button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 200px;
+    background: white;
+}
+
+#filters button {
+    background: #1f6feb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#filters button:hover {
+    background: #174ea6;
+}
+
 table {
     background: white;
     border-radius: 8px;
