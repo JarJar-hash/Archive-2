@@ -2,10 +2,13 @@ let allMatches = [];
 let filteredMatches = [];
 
 // --- Chargement du CSV ---
-fetch('matchs.csv')
+fetch('./matchs.csv')
     .then(res => res.text())
     .then(text => {
+        
+        console.log("CSV brut :", text); // <-- vérifie si le contenu est là
         allMatches = parseCSV(text);
+        console.log("Matches parsés :", allMatches);
 
         // Initialisation des filtres
         populateFilters(allMatches);
