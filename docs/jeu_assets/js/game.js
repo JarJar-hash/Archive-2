@@ -47,3 +47,61 @@ function success() {
   showStep("success");
   localStorage.setItem("unlocked", "true");
 }
+
+/* ❄️ NEIGE ANIMÉE RESPONSIVE */
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+let width, height;
+let flakes = [];
+
+function resizeSnow() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeSnow);
+resizeSnow();
+
+function createFlakes(count) {
+  flakes = [];
+  for (let i = 0; i < count; i++) {
+    flakes.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 3 + 1,
+      d: Math.random() + 0.5
+    });
+  }
+}
+
+createFlakes(window.innerWidth < 600 ? 40 : 80);
+
+function drawSnow() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = "rgba(255,255,255,0.8)";
+  ctx.beginPath();
+  flakes.forEach(flake => {
+    ctx.moveTo(flake.x, flake.y);
+    ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+  });
+  ctx.fill();
+  moveSnow();
+}
+
+function moveSnow() {
+  flakes.forEach(flake => {
+    flake.y += flake.d;
+    if (flake.y > height) {
+      flake.y = 0;
+      flake.x = Math.random() * width;
+    }
+  });
+}
+
+function animateSnow() {
+  drawSnow();
+  requestAnimationFrame(animateSnow);
+}
+
+animateSnow();
+
