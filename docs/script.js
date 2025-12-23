@@ -1,35 +1,38 @@
 let allMatches = [];
 let filteredMatches = [];
 
-// Chargement du CSV
+// --- Chargement du CSV ---
 fetch('matchs.csv')
     .then(res => res.text())
     .then(text => {
         allMatches = parseCSV(text);
-        populateFilters(allMatches);
-        applyFilters();
-        window.addEventListener('resize', render);
-    });
 
-// --- CSV parser simple ---
+        // Initialisation des filtres
+        populateFilters(allMatches);
+
+        // Au début, on affiche tous les matchs
+        filteredMatches = allMatches.slice();
+        render();
+
+        // Re-render si redimensionnement
+        window.addEventListener('resize', render);
+    })
+    .catch(err => console.error("Erreur chargement CSV :", err));
+
+// --- Parser CSV ---
 function parseCSV(text) {
     const lines = text.trim().split('\n');
-    const headers = lines.shift().split(',');
+    if (lines.length < 2) return [];
+
+    const headers = lines.shift().split(',').map(h => h.trim());
 
     return lines
         .map(line => {
-            const values = line.split(',');
-            return Object.fromEntries(
-                headers.map((h, i) => [h.trim(), values[i]?.trim()])
-            );
+            const values = line.split(',').map(v => v.trim());
+            return Object.fromEntries(headers.map((h, i) => [h, values[i] || '']));
         })
-        .filter(m =>
-            m.date &&
-            m.competition &&
-            m.home_team &&
-            m.away_team &&
-            m.video_url
-        );
+        // On filtre les lignes vides ou incomplètes
+        .filter(m => m.date && m.competition && m.home_team && m.away_team && m.video_url);
 }
 
 // --- Filtres ---
@@ -40,7 +43,7 @@ function populateFilters(data) {
     const teams = new Set();
 
     data.forEach(m => {
-        years.add(m.date.substring(6, 4));
+        years.add(m.date.substring(6,4));
         competitions.add(m.competition);
         if (m.phase) phases.add(m.phase);
         teams.add(m.home_team);
@@ -55,8 +58,10 @@ function populateFilters(data) {
 
 function fillSelect(id, values, desc = false) {
     const select = document.getElementById(id);
+    if (!select) return;
+
     [...values]
-        .sort((a, b) => desc ? b.localeCompare(a) : a.localeCompare(b))
+        .sort((a,b) => desc ? b.localeCompare(a) : a.localeCompare(b))
         .forEach(v => {
             const o = document.createElement('option');
             o.value = v;
@@ -65,22 +70,18 @@ function fillSelect(id, values, desc = false) {
         });
 }
 
-// --- Application des filtres ---
+// --- Appliquer les filtres ---
 function applyFilters() {
-    const year = filter-year.value;
-    const competition = filter-competition.value;
-    const phase = filter-phase.value;
-    const team = filter-team.value;
+    const year = document.getElementById('filter-year')?.value;
+    const competition = document.getElementById('filter-competition')?.value;
+    const phase = document.getElementById('filter-phase')?.value;
+    const team = document.getElementById('filter-team')?.value;
 
     filteredMatches = allMatches.filter(m => {
         if (year && !m.date.startsWith(year)) return false;
         if (competition && m.competition !== competition) return false;
         if (phase && m.phase !== phase) return false;
-        if (
-            team &&
-            m.home_team !== team &&
-            m.away_team !== team
-        ) return false;
+        if (team && m.home_team !== team && m.away_team !== team) return false;
         return true;
     });
 
@@ -89,18 +90,17 @@ function applyFilters() {
 
 // --- Rendu adaptatif ---
 function render() {
-    
     if (window.innerWidth <= 1024) {
         renderCards(filteredMatches); // mobile + tablette
     } else {
         renderTable(filteredMatches); // desktop large
     }
-
 }
 
 // --- Vue desktop ---
 function renderTable(data) {
     const tbody = document.querySelector('#table-view tbody');
+    if (!tbody) return;
     tbody.innerHTML = '';
 
     data.forEach(m => {
@@ -117,9 +117,10 @@ function renderTable(data) {
     });
 }
 
-// --- Vue mobile ---
+// --- Vue mobile/tablette ---
 function renderCards(data) {
     const container = document.getElementById('card-view');
+    if (!container) return;
     container.innerHTML = '';
 
     if (data.length === 0) {
@@ -140,13 +141,17 @@ function renderCards(data) {
     });
 }
 
-// --- Events ---
-['filter-year', 'filter-competition', 'filter-phase', 'filter-team']
-    .forEach(id =>
-        document.getElementById(id).addEventListener('change', applyFilters)
-    );
-
-document.getElementById('reset').addEventListener('click', () => {
-    document.querySelectorAll('#filters select').forEach(s => s.value = '');
-    applyFilters();
+// --- Event listeners filtres ---
+['filter-year','filter-competition','filter-phase','filter-team'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', applyFilters);
 });
+
+const resetBtn = document.getElementById('reset');
+if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+        document.querySelectorAll('#filters select').forEach(s => s.value = '');
+        filteredMatches = allMatches.slice();
+        render();
+    });
+}
