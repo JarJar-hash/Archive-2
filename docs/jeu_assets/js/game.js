@@ -35,6 +35,22 @@ function normalize(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function showAlert(message, duration = 2000) {
+  const alertBox = document.getElementById("customAlert");
+  const alertText = document.getElementById("alertText");
+
+  alertText.textContent = message;
+  alertBox.classList.remove("hidden");
+  alertBox.classList.add("show");
+
+  setTimeout(() => {
+    alertBox.classList.remove("show");
+    setTimeout(() => {
+      alertBox.classList.add("hidden");
+    }, 300);
+  }, duration);
+}
+
 function vibrate(pattern = 50) {
   if ("vibrate" in navigator) {
     navigator.vibrate(pattern);
@@ -43,7 +59,7 @@ function vibrate(pattern = 50) {
 
 function wrong() {
   vibrate([50, 30, 50]);
-  alert("🎅 Ce n’est pas la bonne réponse !");
+  showAlert("🎅 FLOP !");
 }
 
 function success() {
@@ -59,7 +75,7 @@ function checkWord1() {
     showStep("step2");
   } else {
     vibrate([50, 30, 50]);
-    alert("❌ Mauvais mot !");
+    showAlert("❌ FLOP !");
   }
 }
 
@@ -70,7 +86,7 @@ function checkWord2() {
     showStep("step3");
   } else {
     vibrate([50, 30, 50]);
-    alert("❌ Mauvais mot !");
+    showAlert("❌ FLOP !");
   }
 }
 
