@@ -1,6 +1,11 @@
 const music = document.getElementById("music");
 music.volume = 0.3;
-music.play();
+
+document.body.addEventListener("click", () => {
+  if (music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
 
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
