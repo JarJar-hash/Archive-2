@@ -100,12 +100,26 @@ function applyFilters() {
 
 // --- Rendu adaptatif ---
 function render() {
+    const table = document.getElementById('table-view');
+    const cards = document.getElementById('card-view');
+
     if (window.innerWidth <= 1024) {
-        renderCards(filteredMatches); // mobile + tablette
+        // mobile + tablette
+        if (table) table.style.display = 'none';
+        if (cards) {
+            cards.style.display = 'grid'; // ou 'block' selon ton CSS
+            renderCards(filteredMatches);
+        }
     } else {
-        renderTable(filteredMatches); // desktop large
+        // desktop large
+        if (cards) cards.style.display = 'none';
+        if (table) {
+            table.style.display = 'table';
+            renderTable(filteredMatches);
+        }
     }
 }
+
 
 // --- Vue desktop ---
 function renderTable(data) {
