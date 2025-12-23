@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Matchs de football</title>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>📊 Matchs de football disponibles</h1>
+    <p>Recherche et visionnage des matchs</p>
+</header>
+
+<main>
+    <table id="matchs" class="display">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Compétition</th>
+                <th>Phase</th>
+                <th>Domicile</th>
+                <th>Extérieur</th>
+                <th>Vidéo</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</main>
+
+<footer>
+    <p>© 2025 - Football Data</p>
+</footer>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
