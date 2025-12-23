@@ -1,63 +1,72 @@
-﻿date;competition;phase;home_team;away_team;video_url;score
-31/05/2025;Champions League;Finale;Paris Saint Germain;Inter Milan;https://www.uefa.tv/video/808117;5-0
-01/06/2024;Champions League;Finale;Borussia Dortmund;Real Madrid;https://www.uefa.tv/video/645372;0-2
-10/06/2023;Champions League;Finale;Manchester City;Inter Milan;https://www.uefa.tv/video/488098;1-0
-14/07/2024;Euro 2024;Finale;Espagne;Angleterre;https://www.uefa.tv/video/667884;2-1
-28/05/2022;Champions League;Finale;Liverpool;Real Madrid;https://www.uefa.tv/video/363926;0-1
-29/05/2021;Champions League;Finale;Manchester City;Chelsea;https://www.uefa.tv/video/226569;0-1
-23/08/2020;Champions League;Finale;Paris Saint Germain;Bayern Munich;https://www.uefa.tv/video/162201;0-1
-01/04/1998;Champions League;Demi finale aller;Juventus;AS Monaco;https://www.uefa.tv/video/140697;4-1
-21/05/2003;Europa League;Finale;Celtic Glasgow;FC Porto;https://www.uefa.tv/video/152658;2-3
-23/04/2003;Champions League;Quart de finale retour;Manchester United;Real Madrid;https://www.uefa.tv/video/134832;4-3
-04/05/2005;Champions League;Demi finale retour;PSV Eindhoven;AC Milan;https://www.uefa.tv/video/145800;3-1
-02/05/2007;Champions League;Demi finale retour;AC Milan;Manchester United;https://www.uefa.tv/video/133683;3-0
-27/05/2009;Champions League;Finale;FC Barcelone;Manchester United;https://www.uefa.tv/video/152796;2-0
-28/05/2011;Champions League;Finale;FC Barcelone;Manchester United;https://www.uefa.tv/video/146331;3-1
-15/03/2011;Champions League;Huitieme de finale retour;Bayern Munich;Inter Milan;https://www.uefa.tv/video/135678;2-3
-01/05/2013;Champions League;Demi finale retour;FC Barcelone;Bayern Munich;https://www.uefa.tv/video/134760;0-3
-25/05/2013;Champions League;Finale;Borussia Dortmund;Bayern Munich;https://www.uefa.tv/video/152822;1-2
-09/04/2013;Champions League;Quart de finale retour;Galatasaray;Real Madrid;https://www.uefa.tv/video/133751;3-2
-24/05/2014;Champions League;Finale;Real Madrid;Atletico de Madrid;https://www.uefa.tv/video/146740;4-1
-14/04/2016;Europa League;Quart de finale retour;Liverpool;Borussia Dortmund;https://www.uefa.tv/video/132550;4-3
-08/03/2017;Champions League;Huitieme de finale retour;FC Barcelone;Paris Saint-Germain;https://www.uefa.tv/video/132549;6-1
-20/04/2017;Europa League;Quart de finale retour;Besiktas;Olympique Lyonnais;https://www.uefa.tv/video/135125;2-1
-20/04/2017;Champions League;Quart de finale retour;Schalke 04;Ajax Amsterdam;https://www.uefa.tv/video/140066;3-2
-12/04/2018;Europa League;Quart de finale retour;RB Salzbourg;Lazio Rome;https://www.uefa.tv/video/140888;4-1
-08/05/2019;Champions League;Demi finale retour;Ajax Amsterdam;Tottenham Hotspur;https://www.uefa.tv/video/141946;2-3
-07/05/2019;Champions League;Demi finale retour;Liverpool;FC Barcelone;https://www.uefa.tv/video/141945;4-0
-17/04/2019;Champions League;Quart de finale retour;Manchester City;Tottenham Hotspur;https://www.uefa.tv/video/140490;4-3
-06/05/1998;Europa League;Finale;Lazio Rome;Inter Milan;https://www.uefa.tv/video/146155;0-3
-21/04/1999;Champions League;Demi finale retour;Juventus;Manchester United;https://www.uefa.tv/video/142685;2-3
-26/05/1999;Champions League;Finale;Manchester United;Bayern Munich;https://www.uefa.tv/video/147289;2-1
-16/05/2001;Europa League;Finale;Liverpool;Deportivo Alaves;https://www.uefa.tv/video/153284;5-4
-25/05/2005;Champions League;Finale;AC Milan;Liverpool;https://www.uefa.tv/video/146336;3-3 (tab)
-04/05/2005;Champions League;Demi finale retour;PSV Eindhoven;AC Milan;https://www.uefa.tv/video/145800;3-1
-14/04/2009;Champions League;Quart de finale retour;Chelsea;Liverpool;https://www.uefa.tv/video/140730;4-4
-25/04/2012;Champions League;Demi finale retour;Real Madrid;Bayern Munich;https://www.uefa.tv/video/142566;2-1
-08/04/2014;Champions League;Quart de finale retour;Borussia Dortmund;Real Madrid;https://www.uefa.tv/video/141153;2-0
-01/05/2014;Europa League;Demi finale retour;Valence CF;Seville FC;https://www.uefa.tv/video/141902;3-1
-28/04/2016;Europa League;Quart de finale aller;Shakhtar Donetsk;Seville FC;https://www.uefa.tv/video/142683;2-2
-03/06/2017;Champions League;Finale;Juventus;Real Madrid;https://www.uefa.tv/video/152750;1-4
-10/04/2018;Champions League;Quart de finale retour;AS Rome;FC Barcelone;https://www.uefa.tv/video/132474;3-0
-02/05/2018;Champions League;Demi finale retour;AS Rome;Liverpool;https://www.uefa.tv/video/145214;4-2
-15/06/1996;Euro 1996;Poule;Ecosse;Angleterre;https://www.uefa.tv/video/140489;0-2
-18/03/2010;Europa League;Huitieme de finale retour;Werder Breme;Valence CF;https://www.uefa.tv/video/133781;4-4
-11/03/2015;Champions League;Huitieme de finale retour;Chelsea;Paris Saint Germain;https://www.uefa.tv/video/139274;2-2
-17/11/2015;Euro 2016;Play-off Retour;Danemark;Suede;https://www.uefa.tv/video/132585;2-2
-06/09/2019;Euro 2020;Qualif;Allemagne;Pays Bas;https://www.uefa.tv/video/135596;2-4
-09/05/2019;Europa League;Demi finale retour;Valence CF;Arsenal;https://www.uefa.tv/video/145216;2-4
-18/08/20;Champions League;Demi finale ;Leipzig;Paris Saint Germain;https://www.uefa.tv/video/160992;0-3
-11/03/20;Champions League;Huitieme de finale retour;Liverpool;Atletico de Madrid;https://www.uefa.tv/video/131697;2-3
-07/04/21;Champions League;Quart de finale aller;Bayern Munich;Paris Saint Germain;https://www.uefa.tv/video/215040;2-3
-16/04/21;Champions League;Huitieme de finale aller;FC Barcelone;Paris Saint Germain;https://www.uefa.tv/video/206699;1-4
-03/05/22;Champions League;Demi finale retour;Villarreal;Liverpool;https://www.uefa.tv/video/354140;2-3
-13/04/22;Champions League;Quart de finale retour;Liverpool;Benfica;https://www.uefa.tv/video/347611;3-3
-19/10/21;Champions League;Poule;Paris Saint Germain;RB Leipzig;https://www.uefa.tv/video/261124;3-2
-17/02/22;Europa League;Play-off Aller;Borussia Dortmund;Rangers;https://www.uefa.tv/video/295019;2-4
-16/04/24;Champions League;Quart de finale retour;Borussia Dortmund;Atletico de Madrid;https://www.uefa.tv/video/611630;4-2
-06/05/25;Champions League;Demi finale retour;Inter Milan;FC Barcelone;https://www.uefa.tv/video/796940;4-3
-30/04/25;Champions League;Demi finale aller;FC Barcelone;Inter Milan;https://www.uefa.tv/video/794038;3-3
-15/04/25;Champions League;Quart de finale retour;Aston Villa;Paris Saint Germain;https://www.uefa.tv/video/788513;3-2
-11/03/25;Champions League;Huitieme de finale retour;Liverpool;Paris Saint Germain;https://www.uefa.tv/video/772395;0-1 (tab)
-21/01/25;Champions League;Poule;SL Benfica;FC Barcelone;https://www.uefa.tv/video/746783;4-5
-11/12/24;Champions League;Poule;Borussia Dortmund;FC Barcelone;https://www.uefa.tv/video/731407;2-3
+date;competition;phase;home_team;away_team;video_url;score;
+31/05/2025;Champions League;Finale;Paris Saint Germain;Inter Milan;https://www.uefa.tv/video/808117;5-0;
+06/05/2025;Champions League;Demi finale retour;Inter Milan;FC Barcelone;https://www.uefa.tv/video/796940;4-3;
+30/04/2025;Champions League;Demi finale aller;FC Barcelone;Inter Milan;https://www.uefa.tv/video/794038;3-3;
+15/04/2025;Champions League;Quart de finale retour;Aston Villa;Paris Saint Germain;https://www.uefa.tv/video/788513;3-2;
+11/03/2025;Champions League;Huitieme de finale retour;Liverpool;Paris Saint Germain;https://www.uefa.tv/video/772395;0-1 (tab);
+21/01/2025;Champions League;Poule;SL Benfica;FC Barcelone;https://www.uefa.tv/video/746783;4-5;
+11/12/2024;Champions League;Poule;Borussia Dortmund;FC Barcelone;https://www.uefa.tv/video/731407;2-3;
+14/07/2024;Euro 2024;Finale;Espagne;Angleterre;https://www.uefa.tv/video/667884;2-1;
+01/06/2024;Champions League;Finale;Borussia Dortmund;Real Madrid;https://www.uefa.tv/video/645372;0-2;
+16/04/2024;Champions League;Quart de finale retour;Borussia Dortmund;Atletico de Madrid;https://www.uefa.tv/video/611630;4-2;
+10/06/2023;Champions League;Finale;Manchester City;Inter Milan;https://www.uefa.tv/video/488098;1-0;
+28/05/2022;Champions League;Finale;Liverpool;Real Madrid;https://www.uefa.tv/video/363926;0-1;
+03/05/2022;Champions League;Demi finale retour;Villarreal;Liverpool;https://www.uefa.tv/video/354140;2-3;
+13/04/2022;Champions League;Quart de finale retour;Liverpool;Benfica;https://www.uefa.tv/video/347611;3-3;
+17/02/2022;Europa League;Play-off Aller;Borussia Dortmund;Rangers;https://www.uefa.tv/video/295019;2-4;
+19/10/2021;Champions League;Poule;Paris Saint Germain;RB Leipzig;https://www.uefa.tv/video/261124;3-2;
+29/05/2021;Champions League;Finale;Manchester City;Chelsea;https://www.uefa.tv/video/226569;0-1;
+16/04/2021;Champions League;Huitieme de finale aller;FC Barcelone;Paris Saint Germain;https://www.uefa.tv/video/206699;1-4;
+07/04/2021;Champions League;Quart de finale aller;Bayern Munich;Paris Saint Germain;https://www.uefa.tv/video/215040;2-3;
+23/08/2020;Champions League;Finale;Paris Saint Germain;Bayern Munich;https://www.uefa.tv/video/162201;0-1;
+18/08/2020;Champions League;Demi finale ;Leipzig;Paris Saint Germain;https://www.uefa.tv/video/160992;0-3;
+11/03/2020;Champions League;Huitieme de finale retour;Liverpool;Atletico de Madrid;https://www.uefa.tv/video/131697;2-3;
+06/09/2019;Euro 2020;Qualif;Allemagne;Pays Bas;https://www.uefa.tv/video/135596;2-4;
+09/05/2019;Europa League;Demi finale retour;Valence CF;Arsenal;https://www.uefa.tv/video/145216;2-4;
+08/05/2019;Champions League;Demi finale retour;Ajax Amsterdam;Tottenham Hotspur;https://www.uefa.tv/video/141946;2-3;
+07/05/2019;Champions League;Demi finale retour;Liverpool;FC Barcelone;https://www.uefa.tv/video/141945;4-0;
+17/04/2019;Champions League;Quart de finale retour;Manchester City;Tottenham Hotspur;https://www.uefa.tv/video/140490;4-3;
+02/05/2018;Champions League;Demi finale retour;AS Rome;Liverpool;https://www.uefa.tv/video/145214;4-2;
+12/04/2018;Europa League;Quart de finale retour;RB Salzbourg;Lazio Rome;https://www.uefa.tv/video/140888;4-1;
+10/04/2018;Champions League;Quart de finale retour;AS Rome;FC Barcelone;https://www.uefa.tv/video/132474;3-0;
+03/06/2017;Champions League;Finale;Juventus;Real Madrid;https://www.uefa.tv/video/152750;1-4;
+20/04/2017;Europa League;Quart de finale retour;Besiktas;Olympique Lyonnais;https://www.uefa.tv/video/135125;2-1;
+20/04/2017;Champions League;Quart de finale retour;Schalke 04;Ajax Amsterdam;https://www.uefa.tv/video/140066;3-2;
+08/03/2017;Champions League;Huitieme de finale retour;FC Barcelone;Paris Saint-Germain;https://www.uefa.tv/video/132549;6-1;
+28/04/2016;Europa League;Quart de finale aller;Shakhtar Donetsk;Seville FC;https://www.uefa.tv/video/142683;2-2;
+14/04/2016;Europa League;Quart de finale retour;Liverpool;Borussia Dortmund;https://www.uefa.tv/video/132550;4-3;
+17/11/2015;Euro 2016;Play-off Retour;Danemark;Suede;https://www.uefa.tv/video/132585;2-2;
+11/03/2015;Champions League;Huitieme de finale retour;Chelsea;Paris Saint Germain;https://www.uefa.tv/video/139274;2-2;
+24/05/2014;Champions League;Finale;Real Madrid;Atletico de Madrid;https://www.uefa.tv/video/146740;4-1;
+01/05/2014;Europa League;Demi finale retour;Valence CF;Seville FC;https://www.uefa.tv/video/141902;3-1;
+08/04/2014;Champions League;Quart de finale retour;Borussia Dortmund;Real Madrid;https://www.uefa.tv/video/141153;2-0;
+25/05/2013;Champions League;Finale;Borussia Dortmund;Bayern Munich;https://www.uefa.tv/video/152822;1-2;
+01/05/2013;Champions League;Demi finale retour;FC Barcelone;Bayern Munich;https://www.uefa.tv/video/134760;0-3;
+09/04/2013;Champions League;Quart de finale retour;Galatasaray;Real Madrid;https://www.uefa.tv/video/133751;3-2;
+19/05/2012;Champions League;Finale;Bayern Munich;Chelsea;https://www.dailymotion.com/video/x1iq4lx;1-1 (tab);
+25/04/2012;Champions League;Demi finale retour;Real Madrid;Bayern Munich;https://www.uefa.tv/video/142566;2-1;
+28/05/2011;Champions League;Finale;FC Barcelone;Manchester United;https://www.uefa.tv/video/146331;3-1;
+15/03/2011;Champions League;Huitieme de finale retour;Bayern Munich;Inter Milan;https://www.uefa.tv/video/135678;2-3;
+18/03/2010;Europa League;Huitieme de finale retour;Werder Breme;Valence CF;https://www.uefa.tv/video/133781;4-4;
+27/05/2009;Champions League;Finale;FC Barcelone;Manchester United;https://www.uefa.tv/video/152796;2-0;
+14/04/2009;Champions League;Quart de finale retour;Chelsea;Liverpool;https://www.uefa.tv/video/140730;4-4;
+02/05/2007;Champions League;Demi finale retour;AC Milan;Manchester United;https://www.uefa.tv/video/133683;3-0;
+19/11/2005;Liga Primera;Championnat;Real Madrid;FC Barcelone;https://www.youtube.com/watch?v=bKzajiGRjVg;0-3;
+25/05/2005;Champions League;Finale;AC Milan;Liverpool;https://www.uefa.tv/video/146336;3-3 (tab);
+04/05/2005;Champions League;Demi finale retour;PSV Eindhoven;AC Milan;https://www.uefa.tv/video/145800;3-1;
+04/05/2005;Champions League;Demi finale retour;PSV Eindhoven;AC Milan;https://www.uefa.tv/video/145800;3-1;
+08/03/2005;Champions League;Huitieme de finale retour;Chelsea;FC Barcelone;https://www.dailymotion.com/video/x8m35nq;4-2;
+25/11/2003;Champions League;Poule;Inter Milan;Arsenal;https://www.dailymotion.com/video/x8m365p;1-5;
+21/05/2003;Europa League;Finale;Celtic Glasgow;FC Porto;https://www.uefa.tv/video/152658;2-3;
+23/04/2003;Champions League;Quart de finale retour;Manchester United;Real Madrid;https://www.uefa.tv/video/134832;4-3;
+30/06/2002;Coupe du Monde;Finale;Allemagne;Bresil;https://www.youtube.com/watch?v=NUhOBQejuPE;0-2;
+21/06/2002;Coupe du Monde;Quart de finale;Angleterre;Bresil;https://www.plus.fifa.com/fr/content/angleterre-bresil-quarts-de-finale-coupe-du-monde-de-la-fifa-coree-japon-2002-match-complet/3b893c17-d637-4e89-858b-bd1398e2a972?gl=fr;0-2;
+16/05/2001;Europa League;Finale;Liverpool;Deportivo Alaves;https://www.uefa.tv/video/153284;5-4;
+26/05/1999;Champions League;Finale;Manchester United;Bayern Munich;https://www.uefa.tv/video/147289;2-1;
+21/04/1999;Champions League;Demi finale retour;Juventus;Manchester United;https://www.uefa.tv/video/142685;2-3;
+07/04/1999;Champions League;Demi finale aller;Dynamo Kiev;Bayern Munich;https://www.youtube.com/watch?v=vACa1NVD6W8;3-3;
+06/05/1998;Europa League;Finale;Lazio Rome;Inter Milan;https://www.uefa.tv/video/146155;0-3;
+01/04/1998;Champions League;Demi finale aller;Juventus;AS Monaco;https://www.uefa.tv/video/140697;4-1;
+15/06/1996;Euro 1996;Poule;Ecosse;Angleterre;https://www.uefa.tv/video/140489;0-2;
+13/09/1994;Europa League;Poule;Leverkusen;PSV Eindhoven;https://www.youtube.com/watch?v=zvH2Roebe5s;5-4;
+18/05/1994;Champions League;Finale;AC Milan;FC Barcelone;https://www.dailymotion.com/video/x8vitbw;4-0;
