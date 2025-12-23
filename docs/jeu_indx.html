@@ -6,61 +6,68 @@
   <link rel="stylesheet" href="jeu_assets/css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+  
 <body>
-
-<canvas id="snow"></canvas>
   
-<audio id="music" src="jeu_assets/music/noel.mp3" loop></audio>
-
-<div id="game">
+  <canvas id="snow"></canvas>
+    
+  <audio id="music" src="jeu_assets/music/noel.mp3" loop></audio>
   
-  <p id="soundHint">🔊 Tape l’écran pour activer la musique</p>
+  <div id="game">
+    
+    <p id="soundHint">🔊 Tape l’écran pour activer la musique</p>
+  
+    <!-- ÉTAPE 1 -->
+    <section class="step active" id="step1">
+      <h1>🎅 Devine le mot</h1>
+      <div class="images">
+        <img src="jeu_assets/images/etche.jpg">
+        <img src="jeu_assets/images/fab_bart.jpg">
+        <img src="jeu_assets/images/robben.jpg">
+        <img src="jeu_assets/images/zid.jpg">
+      </div>
+      <input type="text" id="word1" placeholder="Mot ?">
+      <button onclick="checkWord1()">Valider</button>
+    </section>
+  
+    <!-- ÉTAPE 2 -->
+    <section class="step" id="step2">
+      <h1>❄️ Nouveau mot</h1>
+      <div class="images">
+        <img src="jeu_assets/images/carew.jpg">
+        <img src="jeu_assets/images/haal.jpg">
+        <img src="jeu_assets/images/odeg.jpg">
+        <img src="jeu_assets/images/solsk.jpg">
+      </div>
+      <input type="text" id="word2" placeholder="Mot ?">
+      <button onclick="checkWord2()">Valider</button>
+    </section>
+  
+    <!-- ÉTAPE 3 -->
+    <section class="step" id="step3">
+      <h1>🧩 L'omelette Norvégienne c'est: </h1>
+      <div class="choices">
+        <button onclick="wrong()">Un classique trop souvent oublié</button>
+        <button onclick="success()">La masterclass de JP</button>
+        <button onclick="wrong()">Une spécialité de Norvège</button>
+      </div>
+    </section>
+  
+    <!-- SUCCÈS -->
+    <section class="step" id="success">
+      <h1>🎄 Félicitations !</h1>
+      <p>Joyeux Noël ! L’accès est maintenant déverrouillé 🎁</p>
+      <a href="index.html" class="unlock">Accéder aux données</a>
+    </section>
+  
+  </div>
+  
+  <script src="jeu_assets/js/game.js"></script>
 
-  <!-- ÉTAPE 1 -->
-  <section class="step active" id="step1">
-    <h1>🎅 Devine le mot</h1>
-    <div class="images">
-      <img src="jeu_assets/images/etche.jpg">
-      <img src="jeu_assets/images/fab_bart.jpg">
-      <img src="jeu_assets/images/robben.jpg">
-      <img src="jeu_assets/images/zid.jpg">
-    </div>
-    <input type="text" id="word1" placeholder="Mot ?">
-    <button onclick="checkWord1()">Valider</button>
-  </section>
-
-  <!-- ÉTAPE 2 -->
-  <section class="step" id="step2">
-    <h1>❄️ Nouveau mot</h1>
-    <div class="images">
-      <img src="jeu_assets/images/carew.jpg">
-      <img src="jeu_assets/images/haal.jpg">
-      <img src="jeu_assets/images/odeg.jpg">
-      <img src="jeu_assets/images/solsk.jpg">
-    </div>
-    <input type="text" id="word2" placeholder="Mot ?">
-    <button onclick="checkWord2()">Valider</button>
-  </section>
-
-  <!-- ÉTAPE 3 -->
-  <section class="step" id="step3">
-    <h1>🧩 L'omelette Norvégienne c'est: </h1>
-    <div class="choices">
-      <button onclick="wrong()">Un classique trop souvent oublié</button>
-      <button onclick="success()">La masterclass de JP</button>
-      <button onclick="wrong()">Une spécialité de Norvège</button>
-    </div>
-  </section>
-
-  <!-- SUCCÈS -->
-  <section class="step" id="success">
-    <h1>🎄 Félicitations !</h1>
-    <p>Joyeux Noël ! L’accès est maintenant déverrouillé 🎁</p>
-    <a href="index.html" class="unlock">Accéder aux données</a>
-  </section>
-
-</div>
-
-<script src="jeu_assets/js/game.js"></script>
+  <!-- ALERT PERSONNALISÉE -->
+  <div id="customAlert" class="alert hidden">
+    <span id="alertText"></span>
+  </div>
+  
 </body>
 </html>
