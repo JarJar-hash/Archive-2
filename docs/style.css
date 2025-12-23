@@ -1,9 +1,16 @@
+
 body {
-    margin: 0;
-    font-family: system-ui, Arial, sans-serif;
-    background: #f6f8fa;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
 }
 
+h1, h2, h3 {
+  font-family: 'Arial Black', Arial, sans-serif;
+  color: #0a1435;
+}
+
+/* DESAC AJOUT IMAGES */
+/*
 body {
     background-image: url('images/raja_supp.jpg'); /* chemin relatif ou URL */
     background-size: cover;     /* l'image couvre tout l'écran */
@@ -23,96 +30,112 @@ body::before {
     background: rgba(0,0,0,0.3); /* noir transparent à 30% */
     z-index: -1; /* derrière tout le contenu */
 }
+*/
 
-header {
-    text-align: center;
-    padding: 15px;
-    background: #0d1117;
-    color: white;
+/* 🌐 Couleurs inspirées du style UEFA */
+:root {
+  --uefa-blue-dark: #0a1435;
+  --uefa-blue: #1f6feb;
+  --uefa-gray: #555555;
+  --uefa-light-bg: #f7f8fa;
+  --uefa-white: #ffffff;
+  --uefa-shadow: rgba(0, 0, 0, 0.1);
 }
 
-/* Filtres */
+/* 🌍 Base typographique */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--uefa-light-bg);
+  color: var(--uefa-gray);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+}
+
+/* 🧠 Header */
+header {
+  text-align: center;
+  padding: 20px;
+  background: var(--uefa-blue-dark);
+  color: var(--uefa-white);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* 🔹 Filtres */
 #filters {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: white;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background: var(--uefa-white);
+  padding: 12px;
+  box-shadow: 0 2px 6px var(--uefa-shadow);
 }
 
 #filters select,
 #filters button {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccd0d5;
+  font-size: 1rem;
 }
 
 #filters button {
-    background: #1f6feb;
-    color: white;
-    border: none;
-    cursor: pointer;
+  background: var(--uefa-blue);
+  color: var(--uefa-white);
+  font-weight: 600;
 }
 
-/* Desktop table */
+/* 📊 Desktop table */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--uefa-white);
+  margin-top: 12px;
 }
 
 th, td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e1e4e8;
+  text-align: left;
 }
 
 th {
-    background: #fafafa;
+  background: var(--uefa-blue-dark);
+  color: var(--uefa-white);
+  font-weight: 600;
 }
 
-/* Mobile cards */
-#card-view {
-    padding: 12px;
-    display: grid;
-    gap: 12px;
-}
-
+/* 📱 Mobile cards */
 .match-card {
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    background: white;
-    /* max-width pour éviter que les cartes soient trop larges sur tablette */
-    max-width: 100%;
-    box-sizing: border-box;
+  background: var(--uefa-white);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 2px 6px var(--uefa-shadow);
+  margin-bottom: 12px;
 }
 
 .match-card .competition {
-    font-weight: bold;
-    color: #1f6feb;
+  font-weight: 700;
+  color: var(--uefa-blue-dark);
+  font-size: 1.1rem;
 }
 
 .match-card .teams {
-    font-size: 1.1em;
-    margin: 6px 0;
+  font-size: 1.05rem;
+  margin: 8px 0;
 }
 
 .match-card .meta {
-    font-size: 0.9em;
-    color: #555;
+  font-size: 0.9rem;
+  color: var(--uefa-gray);
 }
 
 .match-card a {
-    display: inline-block;
-    margin-top: 8px;
-    font-weight: bold;
-    color: #1f6feb;
-    text-decoration: none;
+  color: var(--uefa-blue);
+  font-weight: 600;
+  text-decoration: none;
 }
 
 /* Responsive switch */
