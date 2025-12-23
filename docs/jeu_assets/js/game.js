@@ -50,9 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-overlay.classList.add("hide");
-setTimeout(() => overlay.style.display = "none", 500);
-
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
     step.classList.remove("active");
