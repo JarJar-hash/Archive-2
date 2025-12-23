@@ -72,10 +72,11 @@ function fillSelect(id, values, desc = false) {
 
 // --- Appliquer les filtres ---
 function applyFilters() {
-    const year = document.getElementById('filter-year')?.value;
-    const competition = document.getElementById('filter-competition')?.value;
-    const phase = document.getElementById('filter-phase')?.value;
-    const team = document.getElementById('filter-team')?.value;
+    
+    const year = document.getElementById('filter-year')?.value || '';
+    const competition = document.getElementById('filter-competition')?.value || '';
+    const phase = document.getElementById('filter-phase')?.value || '';
+    const team = document.getElementById('filter-team')?.value || '';
 
     filteredMatches = allMatches.filter(m => {
         if (year && !m.date.startsWith(year)) return false;
@@ -84,6 +85,9 @@ function applyFilters() {
         if (team && m.home_team !== team && m.away_team !== team) return false;
         return true;
     });
+
+    console.log('Dropdown values:', {year, competition, phase, team});
+    console.log('Total matches loaded:', allMatches.length);
 
     render();
 }
