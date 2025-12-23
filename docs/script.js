@@ -1,6 +1,7 @@
 Papa.parse("matchs.csv", {
     download: true,
     header: true,
+    skipEmptyLines: true, // 👈 IMPORTANT
     complete: function(results) {
         const data = results.data;
 
