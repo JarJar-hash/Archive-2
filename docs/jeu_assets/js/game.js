@@ -21,11 +21,30 @@ function normalize(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function vibrate(pattern = 50) {
+  if ("vibrate" in navigator) {
+    navigator.vibrate(pattern);
+  }
+}
+
+function wrong() {
+  vibrate([50, 30, 50]);
+  alert("🎅 Ce n’est pas la bonne réponse !");
+}
+
+function success() {
+  vibrate([100, 50, 100, 50, 200]);
+  showStep("success");
+  localStorage.setItem("unlocked", "true");
+}
+
 function checkWord1() {
   const value = normalize(document.getElementById("word1").value);
   if (value === "omelette") {
+    vibrate(100);
     showStep("step2");
   } else {
+    vibrate([50, 30, 50]);
     alert("❌ Mauvais mot !");
   }
 }
@@ -33,19 +52,12 @@ function checkWord1() {
 function checkWord2() {
   const value = normalize(document.getElementById("word2").value);
   if (value === "norvege") {
+    vibrate(100);
     showStep("step3");
   } else {
+    vibrate([50, 30, 50]);
     alert("❌ Mauvais mot !");
   }
-}
-
-function wrong() {
-  alert("🎅 Ce n’est pas la bonne réponse !");
-}
-
-function success() {
-  showStep("success");
-  localStorage.setItem("unlocked", "true");
 }
 
 /* ❄️ NEIGE ANIMÉE RESPONSIVE */
