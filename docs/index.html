@@ -2,67 +2,55 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Football Champagne</title>
-
-    <!-- DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <title>Foot Champagne</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>📊 Matchs de football disponibles</h1>
-    <p>Recherche et visionnage des matchs</p>
+    <h1>⚽ Matchs de football</h1>
 </header>
 
-<main>
-    
-    <section id="filters">
-    
-        <select id="filter-year">
-            <option value="">Toutes les années</option>
-        </select>
-    
-        <select id="filter-competition">
-            <option value="">Toutes les compétitions</option>
-        </select>
-    
-        <select id="filter-phase">
-            <option value="">Toutes les phases</option>
-        </select>
-    
-        <select id="filter-team">
-            <option value="">Toutes les équipes</option>
-        </select>
-    
-        <button id="reset-filters">Réinitialiser</button>
-    
-    </section>
-    
-    <table id="matchs" class="display">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Compétition</th>
-                <th>Phase</th>
-                <th>Domicile</th>
-                <th>Extérieur</th>
-                <th>Vidéo</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</main>
+<!-- Filtres -->
+<section id="filters">
+    <select id="filter-year">
+        <option value="">Toutes les années</option>
+    </select>
 
-<footer>
-    <p>© 2025 - Football Data</p>
-</footer>
+    <select id="filter-competition">
+        <option value="">Toutes les compétitions</option>
+    </select>
 
-<!-- JS -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+    <select id="filter-phase">
+        <option value="">Toutes les phases</option>
+    </select>
+
+    <select id="filter-team">
+        <option value="">Toutes les équipes</option>
+    </select>
+
+    <button id="reset">Réinitialiser</button>
+</section>
+
+<!-- Vue desktop -->
+<table id="table-view" class="desktop-only">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Compétition</th>
+            <th>Phase</th>
+            <th>Domicile</th>
+            <th>Extérieur</th>
+            <th>Vidéo</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- Vue mobile -->
+<main id="card-view" class="mobile-only"></main>
+
 <script src="script.js"></script>
-
 </body>
 </html>
