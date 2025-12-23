@@ -1,33 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(#0b1d3a, #123);
   color: white;
   text-align: center;
+  min-height: 100vh;
 }
 
+#game {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Étapes */
 .step {
   display: none;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 .step.active {
   display: block;
 }
 
-.images img {
-  width: 120px;
-  margin: 10px;
-  border-radius: 10px;
+/* Images */
+.images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 20px 0;
 }
 
+.images img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Champs et boutons */
 input {
-  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
   font-size: 18px;
+  border-radius: 8px;
+  border: none;
 }
 
 button, .unlock {
-  padding: 10px 20px;
+  display: inline-block;
   margin-top: 15px;
+  padding: 12px 24px;
   font-size: 18px;
   background: #c62828;
   color: white;
@@ -37,14 +65,46 @@ button, .unlock {
   text-decoration: none;
 }
 
-button:hover {
-  background: #e53935;
+/* Choix étape 3 */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Hover desktop uniquement */
+@media (hover: hover) {
+  button:hover {
+    background: #e53935;
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  button, .unlock {
+    width: 100%;
+  }
+}
+
+/* 📱📐 Tablette */
+@media (min-width: 601px) and (max-width: 900px) {
+  .images {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
