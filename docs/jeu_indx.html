@@ -12,9 +12,13 @@
   <canvas id="snow"></canvas>
 
   <audio id="music" src="jeu_assets/music/noel.mp3" loop></audio>
+  
   <!-- Overlay discret pour activer la musique -->
-  <div id="musicOverlay" class="overlay">
-    <button id="startMusicBtn" class="smallBtn">🎵 Activer le son</button>
+  <div id="musicOverlay" style="position: fixed; bottom: 20px; right: 20px; z-index:9999;">
+    <button id="startMusicBtn" style="padding:6px 12px; font-size:14px; border-radius:6px; border:none; background:#ff4444; color:white; cursor:pointer;"
+            onclick="startMusic()">
+      🎵 Activer le son
+    </button>
   </div>
 
   <div id="game">
