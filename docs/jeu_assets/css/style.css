@@ -132,3 +132,29 @@ button, .unlock {
   opacity: 0.8;
   margin-top: 10px;
 }
+
+.alert {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-size: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.alert.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.alert.hidden {
+  display: none;
+}
