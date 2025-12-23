@@ -10,6 +10,9 @@ fetch('./matchs.csv')
         allMatches = parseCSV(text);
         console.log("Matches parsés :", allMatches);
 
+        // 🔹 Tri par date dès le chargement
+        allMatches = sortMatchesByDate(allMatches);
+
         // Initialisation des filtres
         populateFilters(allMatches);
 
