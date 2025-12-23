@@ -1,5 +1,5 @@
 const music = document.getElementById("music");
-music.volume = 0.5;
+music.volume = 0.3;
 
 let musicStarted = false;
 
@@ -10,7 +10,8 @@ function startMusic() {
   if (!musicStarted) {
     music.play().then(() => {
       musicStarted = true;
-      overlay.style.display = "none"; // cache l'overlay
+      // Masquer l'overlay de façon fluide
+      overlay.classList.add("hide");
       console.log("🎵 Musique démarrée !");
     }).catch(err => {
       console.log("❌ Impossible de jouer la musique :", err);
@@ -18,7 +19,6 @@ function startMusic() {
   }
 }
 
-// Bouton pour démarrer la musique
 startBtn.addEventListener("click", startMusic);
 
 function showStep(id) {
