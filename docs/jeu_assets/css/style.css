@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#0b1d3a, #123);
+  color: white;
+  text-align: center;
+}
+
+.step {
+  display: none;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.step.active {
+  display: block;
+}
+
+.images img {
+  width: 120px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+button, .unlock {
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-size: 18px;
+  background: #c62828;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #e53935;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
