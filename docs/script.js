@@ -89,11 +89,13 @@ function applyFilters() {
 
 // --- Rendu adaptatif ---
 function render() {
-    if (window.innerWidth <= 768) {
-        renderCards(filteredMatches);
+    
+    if (window.innerWidth <= 1024) {
+        renderCards(filteredMatches); // mobile + tablette
     } else {
-        renderTable(filteredMatches);
+        renderTable(filteredMatches); // desktop large
     }
+
 }
 
 // --- Vue desktop ---
