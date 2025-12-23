@@ -1,54 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const music = document.getElementById("music");
-  music.volume = 0.3;
+const music = document.getElementById("music");
+music.volume = 0.3;
+let musicStarted = false;
 
-  let musicStarted = false;
-  const overlay = document.getElementById("musicOverlay");
-  const startBtn = document.getElementById("startMusicBtn");
-
-  function startMusic() {
-    if (!musicStarted) {
-      music.play().then(() => {
-        musicStarted = true;
-        overlay.classList.add("hide"); // disparition fluide
-        setTimeout(() => overlay.style.display = "none", 500);
-        console.log("🎵 Musique démarrée !");
-      }).catch(err => {
-        console.log("❌ Impossible de jouer la musique :", err);
-      });
-    }
+function startMusic() {
+  if (!musicStarted) {
+    music.play().then(() => {
+      musicStarted = true;
+      // Masquer l'overlay immédiatement
+      const overlay = document.getElementById("musicOverlay");
+      overlay.style.display = "none";
+      console.log("🎵 Musique démarrée !");
+    }).catch(err => {
+      console.log("❌ Impossible de jouer la musique :", err);
+    });
   }
-
-  // Clique sur le bouton pour démarrer la musique
-  startBtn.addEventListener("click", startMusic);
-
-  // Si l'utilisateur n'a pas cliqué, cacher le bouton après le premier mot
-  function hideOverlayAfterFirstGame() {
-    if (!musicStarted) {
-      overlay.classList.add("hide");
-      setTimeout(() => overlay.style.display = "none", 500);
-    }
-    // Retirer le listener pour ne pas répéter
-    document.removeEventListener("checkWord1Done", hideOverlayAfterFirstGame);
-  }
-
-  // Custom event pour savoir quand le premier mot est validé
-  document.addEventListener("checkWord1Done", hideOverlayAfterFirstGame);
-
-  // Fonction checkWord1 modifiée pour déclencher l'event
-  window.checkWord1 = function() {
-    const value = normalize(document.getElementById("word1").value);
-    if (value === "omelette") {
-      vibrate(100);
-      showStep("step2");
-    } else {
-      vibrate([50, 30, 50]);
-      showAlert("❌ FLOP !");
-    }
-    // Déclenchement de l'événement custom
-    document.dispatchEvent(new Event("checkWord1Done"));
-  };
-});
+}
 
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
@@ -97,8 +63,28 @@ function success() {
   sessionStorage.setItem("unlocked", "true");
 }
 
+// Après la validation du premier mot
+function checkWord1() {
+  const value = normalize(document.getElementById("word1").value)
+                .replace(/\s+/g, ""); // supprime tous les espaces;
+  if (value === "omelette") {
+    vibrate(100);
+    showStep("step2");
+  } else {
+    vibrate([50, 30, 50]);
+    showAlert("❌ FLOP !");
+  }
+
+  // Masquer le bouton musique si il est encore visible
+  const overlay = document.getElementById("musicOverlay");
+  if (overlay && overlay.style.display !== "none") {
+    overlay.style.display = "none";
+  }
+}
+
 function checkWord2() {
-  const value = normalize(document.getElementById("word2").value);
+  const value = normalize(document.getElementById("word2").value)
+                .replace(/\s+/g, ""); // supprime tous les espaces ;
   if (value === "norvege") {
     vibrate(100);
     showStep("step3");
