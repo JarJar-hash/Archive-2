@@ -127,28 +127,39 @@ button, .unlock {
   z-index: 2;
 }
 
+/* Overlay réduit et semi-transparent */
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
+  bottom: 20px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.overlay button {
-  padding: 20px 40px;
-  font-size: 20px;
-  border-radius: 12px;
+/* Bouton plus petit */
+.overlay button.smallBtn {
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   background-color: #ff4444;
   color: #fff;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Ajouter transition pour disparition fluide */
+.overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .alert {
