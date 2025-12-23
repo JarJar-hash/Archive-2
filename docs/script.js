@@ -43,8 +43,74 @@ function parseCSV(text) {
         .filter(m => Object.values(m).some(v => v !== ''));
 }
 
-
 // --- Filtres ---
+
+function getCurrentFilters() {
+    return {
+        year: document.getElementById('filter-year')?.value || '',
+        competition: document.getElementById('filter-competition')?.value || '',
+        phase: document.getElementById('filter-phase')?.value || '',
+        team: document.getElementById('filter-team')?.value || ''
+    };
+}
+
+function filterMatches(matches, filters) {
+    return matches.filter(m => {
+        if (filters.year && !m.date.endsWith(filters.year)) return false;
+        if (filters.competition && m.competition !== filters.competition) return false;
+        if (filters.phase && m.phase !== filters.phase) return false;
+        if (filters.team && m.home_team !== filters.team && m.away_team !== filters.team) return false;
+        return true;
+    });
+}
+
+function refillSelectWithCount(id, values, selectedValue, filterKey) {
+    const select = document.getElementById(id);
+    if (!select) return;
+
+    select.innerHTML = '<option value="">Tous</option>';
+
+    values.forEach(v => {
+        const filters = getCurrentFilters();
+        filters[filterKey] = v;
+
+        const count = countMatchesWith(filters);
+
+        // Option désactivée si aucun match
+        const option = document.createElement('option');
+        option.value = v;
+        option.textContent = `${v} (${count})`;
+        option.disabled = count === 0;
+
+        if (v === selectedValue) option.selected = true;
+
+        select.appendChild(option);
+    });
+}
+
+function updateFiltersFromData(data) {
+    const years = new Set();
+    const competitions = new Set();
+    const phases = new Set();
+    const teams = new Set();
+
+    data.forEach(m => {
+        years.add(m.date.split('/')[2]);
+        competitions.add(m.competition);
+        if (m.phase) phases.add(m.phase);
+        teams.add(m.home_team);
+        teams.add(m.away_team);
+    });
+
+    const current = getCurrentFilters();
+
+    refillSelectWithCount('filter-year', years, current.year, 'year');
+    refillSelectWithCount('filter-competition', competitions, current.competition, 'competition');
+    refillSelectWithCount('filter-phase', phases, current.phase, 'phase');
+    refillSelectWithCount('filter-team', teams, current.team, 'team');
+}
+
+
 function populateFilters(data) {
     const years = new Set();
     const competitions = new Set();
@@ -92,28 +158,23 @@ function sortMatchesByDate(matches) {
     return matches.sort((a, b) => parseDateDMY(a.date) - parseDateDMY(b.date));
 }
 
+function countMatchesWith(filters) {
+    return filterMatches(allMatches, filters).length;
+}
+
 // --- Appliquer les filtres ---
 function applyFilters() {
-    
-    const year = document.getElementById('filter-year')?.value || '';
-    const competition = document.getElementById('filter-competition')?.value || '';
-    const phase = document.getElementById('filter-phase')?.value || '';
-    const team = document.getElementById('filter-team')?.value || '';
+    const filters = getCurrentFilters();
 
-    filteredMatches = allMatches.filter(m => {
-        if (year && !m.date.endsWith(year)) return false;
-        if (competition && m.competition !== competition) return false;
-        if (phase && m.phase !== phase) return false;
-        if (team && m.home_team !== team && m.away_team !== team) return false;
-        return true;
-    });
+    // 1. Appliquer les filtres
+    filteredMatches = filterMatches(allMatches, filters);
 
-    console.log('Dropdown values:', {year, competition, phase, team});
-    console.log('Total matches loaded:', allMatches.length);
+    // 2. Mettre à jour les autres filtres dynamiquement
+    updateFiltersFromData(filteredMatches);
 
-    // 🔹 Trier avant rendu
+    // 3. Trier + render
     filteredMatches = sortMatchesByDate(filteredMatches);
-
+    
     render();
 }
 
@@ -199,3 +260,9 @@ if (resetBtn) {
         render();
     });
 }
+
+// --- FILTERS UX ---
+select.disabled = values.size === 0;
+
+document.getElementById('match-count').textContent =
+    `${filteredMatches.length} matchs`;
