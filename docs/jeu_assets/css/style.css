@@ -126,3 +126,9 @@ button, .unlock {
   position: relative;
   z-index: 2;
 }
+
+#soundHint {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 10px;
+}
