@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Matchs de football</title>
+    <title>Football Champagne</title>
 
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
@@ -16,6 +16,29 @@
 </header>
 
 <main>
+    
+    <section id="filters">
+    
+        <select id="filter-year">
+            <option value="">Toutes les années</option>
+        </select>
+    
+        <select id="filter-competition">
+            <option value="">Toutes les compétitions</option>
+        </select>
+    
+        <select id="filter-phase">
+            <option value="">Toutes les phases</option>
+        </select>
+    
+        <select id="filter-team">
+            <option value="">Toutes les équipes</option>
+        </select>
+    
+        <button id="reset-filters">Réinitialiser</button>
+    
+    </section>
+    
     <table id="matchs" class="display">
         <thead>
             <tr>
