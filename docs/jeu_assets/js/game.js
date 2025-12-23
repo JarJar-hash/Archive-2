@@ -1,25 +1,25 @@
 const music = document.getElementById("music");
-music.volume = 0.3;
+music.volume = 0.5;
 
 let musicStarted = false;
+
+const overlay = document.getElementById("musicOverlay");
+const startBtn = document.getElementById("startMusicBtn");
 
 function startMusic() {
   if (!musicStarted) {
     music.play().then(() => {
       musicStarted = true;
-    }).catch(() => {
-      // navigateur bloque tant qu'il n'y a pas d'interaction valide
+      overlay.style.display = "none"; // cache l'overlay
+      console.log("🎵 Musique démarrée !");
+    }).catch(err => {
+      console.log("❌ Impossible de jouer la musique :", err);
     });
   }
-
-  const hint = document.getElementById("soundHint");
-  if (hint) hint.style.display = "none";
 }
 
-/* Déclenchement sur interaction utilisateur */
-["click", "touchstart", "keydown"].forEach(event => {
-  document.addEventListener(event, startMusic, { once: true });
-});
+// Bouton pour démarrer la musique
+startBtn.addEventListener("click", startMusic);
 
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
