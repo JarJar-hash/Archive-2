@@ -85,7 +85,7 @@ function applyFilters() {
     const team = document.getElementById('filter-team')?.value || '';
 
     filteredMatches = allMatches.filter(m => {
-        if (year && !m.date.startsWith(year)) return false;
+        if (year && !m.date.endsWith(year)) return false;
         if (competition && m.competition !== competition) return false;
         if (phase && m.phase !== phase) return false;
         if (team && m.home_team !== team && m.away_team !== team) return false;
