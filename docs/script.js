@@ -1,107 +1,150 @@
-body {
-    margin: 0;
-    font-family: system-ui, Arial, sans-serif;
-    background: #f6f8fa;
+let allMatches = [];
+let filteredMatches = [];
+
+// Chargement du CSV
+fetch('matchs.csv')
+    .then(res => res.text())
+    .then(text => {
+        allMatches = parseCSV(text);
+        populateFilters(allMatches);
+        applyFilters();
+        window.addEventListener('resize', render);
+    });
+
+// --- CSV parser simple ---
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = lines.shift().split(',');
+
+    return lines
+        .map(line => {
+            const values = line.split(',');
+            return Object.fromEntries(
+                headers.map((h, i) => [h.trim(), values[i]?.trim()])
+            );
+        })
+        .filter(m =>
+            m.date &&
+            m.competition &&
+            m.home_team &&
+            m.away_team &&
+            m.video_url
+        );
 }
 
-header {
-    text-align: center;
-    padding: 15px;
-    background: #0d1117;
-    color: white;
+// --- Filtres ---
+function populateFilters(data) {
+    const years = new Set();
+    const competitions = new Set();
+    const phases = new Set();
+    const teams = new Set();
+
+    data.forEach(m => {
+        years.add(m.date.substring(6, 4));
+        competitions.add(m.competition);
+        if (m.phase) phases.add(m.phase);
+        teams.add(m.home_team);
+        teams.add(m.away_team);
+    });
+
+    fillSelect('filter-year', years, true);
+    fillSelect('filter-competition', competitions);
+    fillSelect('filter-phase', phases);
+    fillSelect('filter-team', teams);
 }
 
-/* Filtres */
-#filters {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: white;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+function fillSelect(id, values, desc = false) {
+    const select = document.getElementById(id);
+    [...values]
+        .sort((a, b) => desc ? b.localeCompare(a) : a.localeCompare(b))
+        .forEach(v => {
+            const o = document.createElement('option');
+            o.value = v;
+            o.textContent = v;
+            select.appendChild(o);
+        });
 }
 
-#filters select,
-#filters button {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+// --- Application des filtres ---
+function applyFilters() {
+    const year = filter-year.value;
+    const competition = filter-competition.value;
+    const phase = filter-phase.value;
+    const team = filter-team.value;
+
+    filteredMatches = allMatches.filter(m => {
+        if (year && !m.date.startsWith(year)) return false;
+        if (competition && m.competition !== competition) return false;
+        if (phase && m.phase !== phase) return false;
+        if (
+            team &&
+            m.home_team !== team &&
+            m.away_team !== team
+        ) return false;
+        return true;
+    });
+
+    render();
 }
 
-#filters button {
-    background: #1f6feb;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-/* Desktop table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-}
-
-th, td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
-}
-
-th {
-    background: #fafafa;
-}
-
-/* Mobile cards */
-#card-view {
-    padding: 12px;
-    display: grid;
-    gap: 12px;
-}
-
-.match-card {
-    background: white;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.match-card .competition {
-    font-weight: bold;
-    color: #1f6feb;
-}
-
-.match-card .teams {
-    font-size: 1.1em;
-    margin: 6px 0;
-}
-
-.match-card .meta {
-    font-size: 0.9em;
-    color: #555;
-}
-
-.match-card a {
-    display: inline-block;
-    margin-top: 8px;
-    font-weight: bold;
-    color: #1f6feb;
-    text-decoration: none;
-}
-
-/* Responsive switch */
-.mobile-only {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none;
-    }
-    .mobile-only {
-        display: block;
+// --- Rendu adaptatif ---
+function render() {
+    if (window.innerWidth <= 768) {
+        renderCards(filteredMatches);
+    } else {
+        renderTable(filteredMatches);
     }
 }
+
+// --- Vue desktop ---
+function renderTable(data) {
+    const tbody = document.querySelector('#table-view tbody');
+    tbody.innerHTML = '';
+
+    data.forEach(m => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${m.date}</td>
+            <td>${m.competition}</td>
+            <td>${m.phase || ''}</td>
+            <td>${m.home_team}</td>
+            <td>${m.away_team}</td>
+            <td><a href="${m.video_url}" target="_blank">▶</a></td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// --- Vue mobile ---
+function renderCards(data) {
+    const container = document.getElementById('card-view');
+    container.innerHTML = '';
+
+    if (data.length === 0) {
+        container.innerHTML = '<p>Aucun match trouvé</p>';
+        return;
+    }
+
+    data.forEach(m => {
+        const div = document.createElement('div');
+        div.className = 'match-card';
+        div.innerHTML = `
+            <div class="competition">${m.competition}</div>
+            <div class="teams">${m.home_team} – ${m.away_team}</div>
+            <div class="meta">${m.date} • ${m.phase || ''}</div>
+            <a href="${m.video_url}" target="_blank">▶ Voir le match</a>
+        `;
+        container.appendChild(div);
+    });
+}
+
+// --- Events ---
+['filter-year', 'filter-competition', 'filter-phase', 'filter-team']
+    .forEach(id =>
+        document.getElementById(id).addEventListener('change', applyFilters)
+    );
+
+document.getElementById('reset').addEventListener('click', () => {
+    document.querySelectorAll('#filters select').forEach(s => s.value = '');
+    applyFilters();
+});
