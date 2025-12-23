@@ -76,6 +76,14 @@ function fillSelect(id, values, desc = false) {
         });
 }
 
+function sortMatchesByDate(matches) {
+    return matches.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB; // croissant : plus ancien → plus récent
+    });
+}
+
 // --- Appliquer les filtres ---
 function applyFilters() {
     
@@ -94,6 +102,9 @@ function applyFilters() {
 
     console.log('Dropdown values:', {year, competition, phase, team});
     console.log('Total matches loaded:', allMatches.length);
+
+    // 🔹 Trier avant rendu
+    filteredMatches = sortMatchesByDate(filteredMatches);
 
     render();
 }
