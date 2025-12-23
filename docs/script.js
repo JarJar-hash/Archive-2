@@ -13,13 +13,11 @@ fetch('./matchs.csv')
         // 🔹 Tri par date dès le chargement
         allMatches = sortMatchesByDate(allMatches);
 
-        // Initialisation des filtres
-        populateFilters(allMatches);
-
-        // Au début, on affiche tous les matchs
         filteredMatches = allMatches.slice();
-        render();
-
+        document.getElementById('filters').style.visibility = 'hidden';
+        applyFilters();
+        document.getElementById('filters').style.visibility = 'visible';
+        
         // Re-render si redimensionnement
         window.addEventListener('resize', render);
     })
