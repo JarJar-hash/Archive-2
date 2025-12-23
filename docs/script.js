@@ -76,12 +76,17 @@ function fillSelect(id, values, desc = false) {
         });
 }
 
+function parseDateDMY(dateStr) {
+    // dateStr = "dd/mm/yyyy"
+    const parts = dateStr.split('/');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // JS months: 0 = Janvier
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+}
+
 function sortMatchesByDate(matches) {
-    return matches.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateA - dateB; // croissant : plus ancien → plus récent
-    });
+    return matches.sort((a, b) => parseDateDMY(a.date) - parseDateDMY(b.date));
 }
 
 // --- Appliquer les filtres ---
@@ -146,6 +151,7 @@ function renderTable(data) {
             <td>${m.phase || ''}</td>
             <td>${m.home_team}</td>
             <td>${m.away_team}</td>
+            <td>${m.score || '-'}</td>
             <td><a href="${m.video_url}" target="_blank">▶</a></td>
         `;
         tbody.appendChild(tr);
@@ -169,7 +175,7 @@ function renderCards(data) {
         div.innerHTML = `
             <div class="competition">${m.competition}</div>
             <div class="teams">${m.home_team} – ${m.away_team}</div>
-            <div class="meta">${m.date} • ${m.phase || ''}</div>
+            <div class="meta">${m.date} • ${m.phase || ''} • ${m.score || '-'}</div>
             <a href="${m.video_url}" target="_blank">▶ Voir le match</a>
         `;
         container.appendChild(div);
