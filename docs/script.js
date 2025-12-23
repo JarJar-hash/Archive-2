@@ -70,19 +70,33 @@ function refillSelectWithCount(id, values, selectedValue, filterKey) {
 
     select.innerHTML = '<option value="">Tous</option>';
 
-    values.forEach(v => {
-        const filters = getCurrentFilters();
-        filters[filterKey] = v;
+    const currentFilters = getCurrentFilters();
 
-        const count = countMatchesWith(filters);
+    // 1. Construire la liste avec counts
+    const options = [...values].map(v => {
+        const filters = { ...currentFilters, [filterKey]: v };
+        return {
+            value: v,
+            count: countMatchesWith(filters)
+        };
+    });
 
-        // Option désactivée si aucun match
+    // 2. Trier du plus dispo au moins dispo
+    options.sort((a, b) => {
+    if (b.count !== a.count) return b.count - a.count;
+    return a.value.localeCompare(b.value); // tie-break alphabétique
+    });
+
+    // 3. Rendu
+    options.forEach(({ value, count }) => {
         const option = document.createElement('option');
-        option.value = v;
-        option.textContent = `${v} (${count})`;
+        option.value = value;
+        option.textContent = `${value} (${count})`;
         option.disabled = count === 0;
 
-        if (v === selectedValue) option.selected = true;
+        if (value === selectedValue) {
+            option.selected = true;
+        }
 
         select.appendChild(option);
     });
