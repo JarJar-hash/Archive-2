@@ -1,103 +1,107 @@
-let table;
-let rawData = [];
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: #f6f8fa;
+}
 
-Papa.parse("matchs.csv", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function(results) {
+header {
+    text-align: center;
+    padding: 15px;
+    background: #0d1117;
+    color: white;
+}
 
-        rawData = results.data.filter(m =>
-            m.date && m.competition && m.home_team && m.away_team
-        );
+/* Filtres */
+#filters {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-        const tableData = rawData.map(m => [
-            m.date,
-            m.competition,
-            m.phase || "",
-            m.home_team,
-            m.away_team,
-            `<a href="${m.video_url}" target="_blank">▶ Voir</a>`
-        ]);
+#filters select,
+#filters button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
 
-        table = $('#matchs').DataTable({
-            data: tableData,
-            pageLength: 10
-        });
+#filters button {
+    background: #1f6feb;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
-        populateFilters(rawData);
+/* Desktop table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    background: #fafafa;
+}
+
+/* Mobile cards */
+#card-view {
+    padding: 12px;
+    display: grid;
+    gap: 12px;
+}
+
+.match-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.match-card .competition {
+    font-weight: bold;
+    color: #1f6feb;
+}
+
+.match-card .teams {
+    font-size: 1.1em;
+    margin: 6px 0;
+}
+
+.match-card .meta {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.match-card a {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #1f6feb;
+    text-decoration: none;
+}
+
+/* Responsive switch */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
     }
-});
-
-
-function populateFilters(data) {
-
-    const years = new Set();
-    const competitions = new Set();
-    const phases = new Set();
-    const teams = new Set();
-
-    data.forEach(m => {
-        years.add(m.date.substring(6, 4));
-        competitions.add(m.competition);
-        if (m.phase) phases.add(m.phase);
-        teams.add(m.home_team);
-        teams.add(m.away_team);
-    });
-
-    fillSelect('#filter-year', [...years].sort().reverse());
-    fillSelect('#filter-competition', [...competitions].sort());
-    fillSelect('#filter-phase', [...phases].sort());
-    fillSelect('#filter-team', [...teams].sort());
+    .mobile-only {
+        display: block;
+    }
 }
-
-function fillSelect(selector, values) {
-    const select = document.querySelector(selector);
-    values.forEach(v => {
-        const option = document.createElement('option');
-        option.value = v;
-        option.textContent = v;
-        select.appendChild(option);
-    });
-}
-
-
-$.fn.dataTable.ext.search.push(function(settings, data) {
-
-    const year = $('#filter-year').val();
-    const competition = $('#filter-competition').val();
-    const phase = $('#filter-phase').val();
-    const team = $('#filter-team').val();
-
-    const matchDate = data[0];
-    const matchCompetition = data[1];
-    const matchPhase = data[2];
-    const homeTeam = data[3];
-    const awayTeam = data[4];
-
-    if (year && !matchDate.startsWith(year)) return false;
-    if (competition && matchCompetition !== competition) return false;
-    if (phase && matchPhase !== phase) return false;
-
-    if (
-        team &&
-        homeTeam !== team &&
-        awayTeam !== team
-    ) return false;
-
-    return true;
-});
-
-
-$('#filter-year, #filter-competition, #filter-phase, #filter-team')
-    .on('change', function () {
-        table.draw();
-    });
-
-$('#reset-filters').on('click', function () {
-    $('#filters select').val('');
-    table.draw();
-});
-
-
-
