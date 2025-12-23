@@ -4,6 +4,26 @@ body {
     background: #f6f8fa;
 }
 
+body {
+    background-image: url('images/raja_supp.jpg'); /* chemin relatif ou URL */
+    background-size: cover;     /* l'image couvre tout l'écran */
+    background-position: center; /* centrée */
+    background-repeat: no-repeat; /* pas de répétition */
+    background-attachment: fixed; /* reste fixe lors du scroll */
+}
+
+/* OVERLAY - IMAGE COLOREE */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* noir transparent à 30% */
+    z-index: -1; /* derrière tout le contenu */
+}
+
 header {
     text-align: center;
     padding: 15px;
