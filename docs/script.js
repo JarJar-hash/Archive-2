@@ -38,7 +38,7 @@ function populateFilters(data) {
     const teams = new Set();
 
     data.forEach(m => {
-        years.add(m.date.substring(0, 4));
+        years.add(m.date.substring(6, 4));
         competitions.add(m.competition);
         if (m.phase) phases.add(m.phase);
         teams.add(m.home_team);
