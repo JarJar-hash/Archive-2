@@ -27,11 +27,11 @@ function parseCSV(text) {
     const lines = text.trim().split('\n');
     if (lines.length < 2) return [];
 
-    const headers = lines.shift().split(',').map(h => h.trim());
+    const headers = lines.shift().split(';').map(h => h.trim());
 
     return lines
         .map(line => {
-            const values = line.split(',').map(v => v.trim());
+            const values = line.split(';').map(v => v.trim());
             return Object.fromEntries(headers.map((h, i) => [h, values[i] || '']));
         })
         // On filtre les lignes vides ou incomplètes
