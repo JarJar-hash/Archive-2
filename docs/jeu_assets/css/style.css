@@ -111,3 +111,18 @@ button, .unlock {
     transform: translateY(0);
   }
 }
+
+#snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* clics passent à travers */
+  z-index: 1;
+}
+
+#game {
+  position: relative;
+  z-index: 2;
+}
