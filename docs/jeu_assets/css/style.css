@@ -128,36 +128,22 @@ button, .unlock {
 }
 
 /* Overlay réduit et discret */
-.overlay {
+#musicOverlay {
   position: fixed;
-  bottom: 20px; /* bas de l'écran */
+  bottom: 20px; /* coin bas de l'écran */
   right: 20px;  /* coin droit */
-  width: auto;
-  height: auto;
-  background: rgba(0,0,0,0.5);
-  border-radius: 12px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease;
 }
 
-.overlay.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Bouton plus petit */
-.overlay button.smallBtn {
+/* Bouton réduit et stylé */
+#musicOverlay button {
   padding: 6px 12px;
   font-size: 14px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
   background-color: #ff4444;
-  color: #fff;
+  color: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
