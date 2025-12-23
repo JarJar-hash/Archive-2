@@ -1,11 +1,25 @@
 const music = document.getElementById("music");
 music.volume = 0.3;
 
-document.body.addEventListener("click", () => {
-  if (music.paused) {
-    music.play().catch(() => {});
+let musicStarted = false;
+
+function startMusic() {
+  if (!musicStarted) {
+    music.play().then(() => {
+      musicStarted = true;
+    }).catch(() => {
+      // navigateur bloque tant qu'il n'y a pas d'interaction valide
+    });
   }
-}, { once: true });
+
+  const hint = document.getElementById("soundHint");
+  if (hint) hint.style.display = "none";
+}
+
+/* Déclenchement sur interaction utilisateur */
+["click", "touchstart", "keydown"].forEach(event => {
+  document.addEventListener(event, startMusic, { once: true });
+});
 
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
