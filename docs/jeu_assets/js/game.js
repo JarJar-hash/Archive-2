@@ -49,7 +49,7 @@ function wrong() {
 function success() {
   vibrate([100, 50, 100, 50, 200]);
   showStep("success");
-  localStorage.setItem("unlocked", "true");
+  sessionStorage.setItem("unlocked", "true");
 }
 
 function checkWord1() {
