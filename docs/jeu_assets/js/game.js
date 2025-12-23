@@ -1,8 +1,9 @@
-const music = document.getElementById("music");
-music.volume = 0.3;
 let musicStarted = false;
 
 function startMusic() {
+  const music = document.getElementById("music");
+  music.volume = 0.3;
+
   if (!musicStarted) {
     music.play().then(() => {
       musicStarted = true;
