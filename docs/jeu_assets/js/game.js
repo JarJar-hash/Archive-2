@@ -17,24 +17,35 @@ function startMusic() {
   }
 }
 
-function playTemporaryAudio(tempAudioId, tempVolume = 1.0) {
+let currentTempAudio = null; // variable globale pour suivre la musique temporaire en cours
+
+function playTemporaryAudio(tempId, tempVolume = 1) {
   const mainMusic = document.getElementById("music");
-  const tempAudio = document.getElementById(tempAudioId);
+  const tempAudio = document.getElementById(tempId);
 
-  // Stop musique principale
+  // Si une musique temporaire est déjà en cours, l'arrêter
+  if (currentTempAudio && !currentTempAudio.paused) {
+    currentTempAudio.pause();
+    currentTempAudio.currentTime = 0;
+  }
+
+  // Mettre la nouvelle musique temporaire comme musique actuelle
+  currentTempAudio = tempAudio;
+
+  // Réglage du volume
+  tempAudio.volume = tempVolume;
+
+  // Mettre la musique principale en pause
   mainMusic.pause();
-  // mainMusic.currentTime = 0; // repartir du début si besoin
-
-  // Régler le volume de la musique temporaire
-  tempAudio.volume = tempVolume; // valeur entre 0.0 et 1.0
 
   // Jouer la musique temporaire
   tempAudio.currentTime = 0;
   tempAudio.play();
 
-  // Quand elle se termine, reprendre la musique principale
+  // Quand la musique temporaire se termine, reprendre la musique principale
   tempAudio.onended = () => {
     mainMusic.play();
+    currentTempAudio = null; // réinitialiser la variable
   };
 }
 
