@@ -172,3 +172,87 @@ button, .unlock {
 .alert.hidden {
   display: none;
 }
+
+/* Centrer et agrandir uniquement la section succès */
+#success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: rgba(255, 248, 220, 0.1); /* très léger fond crème */
+  color: #2c3e50; /* texte sombre pour contraste */
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+/* Ajout d'ombres légères sur tout le contenu */
+#success h1, 
+#success p, 
+#success .unlock {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Titres plus grands et colorés */
+#success h1 {
+  font-size: 4rem;
+  margin-bottom: 25px;
+  color: #e74c3c; /* rouge Noël */
+}
+
+/* Paragraphes plus gros et emojis plus visibles */
+#success p {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Augmenter la taille des emojis pour qu’ils ressortent */
+#success p::before,
+#success p::after {
+  content: "🎉";
+  margin: 0 5px;
+  font-size: 1.5rem;
+}
+
+/* Bouton accès aux données */
+#success .unlock {
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 18px 35px;
+  margin-top: 25px;
+  background: linear-gradient(45deg, #e74c3c, #f1c40f);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#success .unlock:hover {
+  background: linear-gradient(45deg, #c0392b, #f39c12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Optionnel : ajouter un léger effet de flocon animé derrière */
+#success::before {
+  content: "❄️❄️❄️";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  opacity: 0.1;
+  animation: floatSnow 10s linear infinite;
+}
+
+@keyframes floatSnow {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(20px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
