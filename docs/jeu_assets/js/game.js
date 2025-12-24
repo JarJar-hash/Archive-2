@@ -80,7 +80,7 @@ function wrong() {
 }
 
 function success() {
-  playTemporaryAudio("musicSuccessFinal"); // joue la musique d’échec
+  playTemporaryAudio("musicSuccFinal"); // joue la musique d’échec
   vibrate([100, 50, 100, 50, 200]);
   showStep("success");
   sessionStorage.setItem("unlocked", "true");
@@ -109,7 +109,7 @@ function checkWord2() {
   const value = normalize(document.getElementById("word2").value)
                 .replace(/\s+/g, ""); // supprime tous les espaces ;
   if (value === "norvege") {
-    playTemporaryAudio("musicSuccess2"); // joue la musique d’échec
+    playTemporaryAudio("musicSucc2"); // joue la musique d’échec
     vibrate(100);
     showStep("step3");
   } else {
