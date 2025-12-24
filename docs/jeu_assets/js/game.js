@@ -17,6 +17,26 @@ function startMusic() {
   }
 }
 
+function playTemporaryAudio(tempAudioId, tempVolume = 1.0) {
+  const mainMusic = document.getElementById("music");
+  const tempAudio = document.getElementById(tempAudioId);
+
+  // Stop musique principale
+  mainMusic.pause();
+  // mainMusic.currentTime = 0; // repartir du début si besoin
+
+  // Régler le volume de la musique temporaire
+  tempAudio.volume = tempVolume; // valeur entre 0.0 et 1.0
+
+  // Jouer musique temporaire
+  tempAudio.play();
+
+  // Quand elle se termine, reprendre la musique principale
+  tempAudio.onended = () => {
+    mainMusic.play();
+  };
+}
+
 function showStep(id) {
   document.querySelectorAll(".step").forEach(step => {
     step.classList.remove("active");
@@ -54,11 +74,13 @@ function vibrate(pattern = 50) {
 }
 
 function wrong() {
+  playTemporaryAudio("musicFailFinal"); // joue la musique d’échec
   vibrate([50, 30, 50]);
   showAlert("🎅 FLOP !");
 }
 
 function success() {
+  playTemporaryAudio("musicSuccessFinal"); // joue la musique d’échec
   vibrate([100, 50, 100, 50, 200]);
   showStep("success");
   sessionStorage.setItem("unlocked", "true");
@@ -87,9 +109,11 @@ function checkWord2() {
   const value = normalize(document.getElementById("word2").value)
                 .replace(/\s+/g, ""); // supprime tous les espaces ;
   if (value === "norvege") {
+    playTemporaryAudio("musicSuccess2"); // joue la musique d’échec
     vibrate(100);
     showStep("step3");
   } else {
+    playTemporaryAudio("musicFail2"); // joue la musique d’échec
     vibrate([50, 30, 50]);
     showAlert("❌ FLOP !");
   }
