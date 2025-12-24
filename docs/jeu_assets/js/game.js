@@ -28,7 +28,8 @@ function playTemporaryAudio(tempAudioId, tempVolume = 1.0) {
   // Régler le volume de la musique temporaire
   tempAudio.volume = tempVolume; // valeur entre 0.0 et 1.0
 
-  // Jouer musique temporaire
+  // Jouer la musique temporaire
+  tempAudio.currentTime = 0;
   tempAudio.play();
 
   // Quand elle se termine, reprendre la musique principale
