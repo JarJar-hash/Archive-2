@@ -174,11 +174,21 @@ function countMatchesWith(filters) {
     return filterMatches(allMatches, filters).length;
 }
 
+function setFiltersDisabled(state) {
+    document.querySelectorAll('#filters select').forEach(s => s.disabled = state);
+}
+
+let lastFilters = null;
 // --- Appliquer les filtres ---
 function applyFilters() {
-    const filters = getCurrentFilters();
 
-    // 1. Appliquer les filtres
+    setFiltersDisabled(true);
+    
+    const filters = getCurrentFilters();
+    if (JSON.stringify(filters) === JSON.stringify(lastFilters)) return;
+    lastFilters = filters;
+
+    // 1. Filtrer
     filteredMatches = filterMatches(allMatches, filters);
 
     // 2. Mettre à jour les autres filtres dynamiquement
@@ -186,8 +196,15 @@ function applyFilters() {
 
     // 3. Trier + render
     filteredMatches = sortMatchesByDate(filteredMatches);
-    
+
+    // 4. Render
     render();
+
+    // 5. Compteurs
+    document.getElementById('match-count').textContent =
+    `${filteredMatches.length} matchs`;
+
+    setFiltersDisabled(false);
 }
 
 // --- Rendu adaptatif ---
@@ -268,13 +285,7 @@ const resetBtn = document.getElementById('reset');
 if (resetBtn) {
     resetBtn.addEventListener('click', () => {
         document.querySelectorAll('#filters select').forEach(s => s.value = '');
-        filteredMatches = allMatches.slice();
-        render();
+        applyFilters(); // 👈 recalcul complet
     });
 }
 
-// --- FILTERS UX ---
-select.disabled = values.size === 0;
-
-document.getElementById('match-count').textContent =
-    `${filteredMatches.length} matchs`;
