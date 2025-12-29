@@ -75,7 +75,7 @@ function refillSelectWithCount(id, values, selectedValue, filterKey) {
         const filters = { ...currentFilters, [filterKey]: v };
         return {
             value: v,
-            count: countMatchesWith(filters)
+            count: countMatchesWith(filteredMatches, filters)
         };
     });
 
@@ -170,8 +170,8 @@ function sortMatchesByDate(matches) {
     return matches.sort((a, b) => parseDateDMY(a.date) - parseDateDMY(b.date));
 }
 
-function countMatchesWith(filters) {
-    return filterMatches(allMatches, filters).length;
+function countMatchesWith(base, filters) {
+    return filterMatches(base, filters).length;
 }
 
 function setFiltersDisabled(state) {
@@ -179,13 +179,21 @@ function setFiltersDisabled(state) {
 }
 
 let lastFilters = null;
+let isInit = true;
+
 // --- Appliquer les filtres ---
 function applyFilters() {
 
     setFiltersDisabled(true);
     
     const filters = getCurrentFilters();
-    if (JSON.stringify(filters) === JSON.stringify(lastFilters)) return;
+    
+    if (!isInit && JSON.stringify(filters) === JSON.stringify(lastFilters)) {
+        setFiltersDisabled(false);
+        return;
+    }
+
+    isInit = false;
     lastFilters = filters;
 
     // 1. Filtrer
