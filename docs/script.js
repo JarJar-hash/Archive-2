@@ -6,9 +6,9 @@ fetch('./matchs.csv')
     .then(res => res.text())
     .then(text => {
         
-        console.log("CSV brut :", text); // <-- vérifie si le contenu est là
+        // <-- vérifie si le contenu est là -- console.log("CSV brut :", text);
         allMatches = parseCSV(text);
-        console.log("Matches parsés :", allMatches);
+        // console.log("Matches parsés :", allMatches);
 
         // 🔹 Tri par date dès le chargement
         allMatches = sortMatchesByDate(allMatches);
@@ -122,7 +122,7 @@ function updateFiltersFromData(data) {
     refillSelectWithCount('filter-team', teams, current.team, 'team');
 }
 
-
+// NON UTILISE
 function populateFilters(data) {
     const years = new Set();
     const competitions = new Set();
@@ -143,6 +143,7 @@ function populateFilters(data) {
     fillSelect('filter-team', teams);
 }
 
+// NON UTILISE
 function fillSelect(id, values, desc = false) {
     const select = document.getElementById(id);
     if (!select) return;
@@ -209,8 +210,10 @@ function applyFilters() {
     render();
 
     // 5. Compteurs
-    document.getElementById('match-count').textContent =
-    `${filteredMatches.length} matchs`;
+    const counter = document.getElementById('match-count');
+    if (counter) {
+        counter.textContent = `${filteredMatches.length} matchs`;
+    }
 
     setFiltersDisabled(false);
 }
