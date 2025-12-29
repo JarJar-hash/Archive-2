@@ -9,12 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-    // JEU ENIGME -- OUVERTURE SITE -- PAR DEF: DESACTIVER
-    /* <script>
-        if (sessionStorage.getItem("unlocked") !== "true") {
+    <!-- JEU ENIGME -- OUVERTURE SITE -- PAR DEF: DESACTIVER -->
+    <script>
+        const ENABLE_GATE = false;
+        if (ENABLE_GATE && sessionStorage.getItem("unlocked") !== "true") {
         window.location.href = "jeu_indx.html";
         }
-    </script> */
+    </script>
+    
 </head>
 <body>
 
